@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row outline">
+    <div class="col-sm-4">
+      <h1 class="header"><i>Welcome</i></h1>
+      <br> <br>
+      <h1 class="header-sub"> to PIER Network</h1>
+    </div>
+    <div class="col-sm-6">
+      <form class="loginForm" #adminForm="ngForm" (ngSubmit)="authenticateAdmin(admin)">
+
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
+            <h3 class="login-header">LOGIN</h3>
+          </div>
+          <div class="col-sm-4">
+          </div>
+        </div>
+
+        <div class="outline-curved">
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="username" class="form-label"><i>Username:</i></label>
+            </div>
+            <div class="col-sm-8 form-field">
+              <div class="form-group">
+                <input id="username" type="text" class="form-control" [(ngModel)]="admin.userName" name="username"
+                  required #username="ngModel">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="password" class="form-label"><i>Password:</i></label>
+            </div>
+            <div class="col-sm-8 form-field">
+              <div class="form-group">
+                <input id="password" type="password" class="form-control" [(ngModel)]="admin.password" name="password"
+                  required #password="ngModel">
+              </div>
+            </div>
+          </div>
+
+          <div class="row bottom-padding">
+
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-4">
+              <button type="submit" class="button" [disabled]="adminForm.invalid">Sign In</button>
+            </div>
+
+            <div class="col-sm-4"></div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

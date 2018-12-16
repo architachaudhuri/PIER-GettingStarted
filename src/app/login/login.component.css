@@ -1,0 +1,82 @@
+.outline {
+    margin-top: 100px;
+    outline-style: solid;
+    outline-width: .5px;
+    outline-color: #4682B4;
+}
+
+.outline-curved {
+    border: .5px solid #4682B4;
+    border-radius:  35px;
+}
+
+.header {
+    color: #4682B4;
+    font-size: 50px;
+    padding-top: 60px;
+}
+
+.header-sub {
+    color: #4682B4;
+    font-size: 50px;
+    padding-bottom: 60px;
+}
+
+.login-header {
+    color: #4682B4;
+    font-size: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.bottom-padding {
+    padding-bottom: 10px;
+}
+
+.form-label {
+    font-size: 20px;
+    color: #4682B4;
+    text-align: left;
+    padding: 30px 0px 0px 30px;
+}
+
+.form-field {
+    padding-top: 30px;
+    padding-right: 50px;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 10px;
+    color: black;
+}
+
+.form-control {
+    border-color: #00008B;
+}
+
+.button:enabled {
+    background-color: #4682B4;
+    border: .5px solid  #4682B4;
+    border-radius:  10px;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:disabled {
+    background-color: #708090;
+    border: .5px solid  #4682B4;
+    border-radius:  10px;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: default;
+}
