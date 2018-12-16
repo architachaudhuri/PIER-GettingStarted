@@ -1,3 +1,29 @@
-<p>
-  provider-list works!
-</p>
+<div class="container container-outline">
+  <div class="row outline">
+    <div class="col-sm-6">
+      <h3>Welcome to PIER Network</h3>
+    </div>
+    <div class="col-sm-6" style="text-align: right;">
+      <h3>{{admin.userName}} (Administrator)</h3>
+    </div>
+  </div>
+  <div class="row text-align-center">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"> <u>Provider Search</u></div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row table-padding">
+    <table class="table-style">
+      <tr>
+        <th><u>Provider Name (Last Name, First Name)</u></th>
+        <th><u>Provider ID</u></th>
+        <th><u>Location</u></th>
+      </tr>
+      <tr *ngFor="let provider of providerList">
+        <td><a routerLink="/location">{{provider.salutation}}{{provider.lastName}},{{provider.firstName}}</a></td>
+        <td><a routerLink="/location">{{provider.providerId}}</a></td>
+        <td>{{provider.location}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
