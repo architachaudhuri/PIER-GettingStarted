@@ -20,8 +20,8 @@
         <th><u>Location</u></th>
       </tr>
       <tr *ngFor="let provider of providerList">
-        <td><a routerLink="/location">{{provider.salutation}}{{provider.lastName}},{{provider.firstName}}</a></td>
-        <td><a routerLink="/location">{{provider.providerId}}</a></td>
+        <td><a routerLink="#" (click)="routeToProviderDetail(provider.providerId)">{{provider.salutation}}{{provider.lastName}},{{provider.firstName}}</a></td>
+        <td><a routerLink="#" (click)="routeToProviderDetail(provider.providerId)">{{provider.providerId}}</a></td>
         <td>{{provider.location}}</td>
       </tr>
     </table>

@@ -1,0 +1,69 @@
+<div class="container container-outline">
+  <div class="row outline">
+    <div class="col-sm-6">
+      <h3>Welcome to PIER Network</h3>
+    </div>
+    <div class="col-sm-6" style="text-align: right;">
+      <h3>{{admin.userName}} (Administrator)</h3>
+    </div>
+  </div>
+  <div class="row text-align-center">
+    <div class="col-sm-4"><u>Provider Physical Location</u></div>
+    <div class="col-sm-4"><u>{{provider.salutation}} {{provider.lastName}}, {{provider.firstName}}</u></div>
+    <div class="col-sm-4"><u>Provider ID : {{provider.providerId}}</u></div>
+  </div>
+  <div class="row sub-outline">
+    <div class="col-sm-6"><u>Hours of Operation</u></div>
+  </div>
+  <form class="" ngForm="hoursOpForm" #hoursOpForm="ngForm" (ngSubmit)="saveHours(providerOpHours)">
+    <div class="row table-padding">
+      <!-- <div ag-grid="gridOptions" class="ag-theme-blue grid-align-center">
+          <ag-grid-angular style="width: 600px; height: 150px;" [rowData]="rowData" [columnDefs]="columnDefs">
+          </ag-grid-angular>
+        </div> -->
+      <table class="table-style">
+        <tr>
+          <th>Select</th>
+          <th>Individual Days</th>
+          <th>Operating</th>
+          <th>Booking Mode</th>
+          <th>Hours of Operation</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="selectBox" value="{{providerOpHours.day}}" [(ngModel)]="providerOpHours.day"
+              #selectBox="ngModel" disabled>
+          </td>
+          <td>{{providerOpHours.day}}</td>
+          <td><input type="checkbox" name="isClosed" [(ngModel)]="providerOpHours.isClosed" #isClosed="ngModel">Office
+            is closed</td>
+          <td><input type="checkbox" name="appointmentOnly" value="appointmentOnly" [(ngModel)]="providerOpHours.appointmentOnly"
+              #appointmentOnly="ngModel" [disabled]="providerOpHours.openAlways || providerOpHours.isClosed" [checked]="isChecked()">Appointment
+            only <br>
+            <input type="checkbox" name="openAlways" value="openAlways" [(ngModel)]="providerOpHours.openAlways"
+              #openAlways="ngModel" [disabled]="providerOpHours.isClosed || providerOpHours.appointmentOnly" [checked]="isChecked()">Open
+            24 hrs
+          </td>
+          <td>
+        <tr>
+          <td> <input type="checkbox" name="openingHours" [(ngModel)]="providerOpHours.isOpen" #openingHours="ngModel"
+              [disabled]="providerOpHours.openAlways || providerOpHours.isClosed || providerOpHours.appointmentOnly">Opening
+            hours </td>
+          <td> <input type="text" value="{{providerOpHours.openingHours}}" [(ngModel)]="providerOpHours.openingHours"
+              name="opensAt" #opensAt="ngModel" [disabled]="providerOpHours.openAlways || providerOpHours.isClosed || providerOpHours.appointmentOnly"
+              [checked]="isChecked()"></td>
+        </tr>
+        <tr>
+          <td> <input type="checkbox" name="closingHours" [(ngModel)]="providerOpHours.isClose" #closingHours="ngModel"
+              [disabled]="providerOpHours.openAlways || providerOpHours.isClosed || providerOpHours.appointmentOnly">Closing
+            hours </td>
+          <td> <input type="text" value="{{providerOpHours.closingHours}}" [(ngModel)]="providerOpHours.closingHours"
+              name="closesAt" #closesAt="ngModel" [disabled]="providerOpHours.openAlways || providerOpHours.isClosed || providerOpHours.appointmentOnly"></td>
+        </tr>
+        </td>
+        <td><button type="submit" class="btn btn-primary">Save</button></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>

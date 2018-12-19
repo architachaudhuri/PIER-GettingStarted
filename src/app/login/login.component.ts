@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   authenticateAdmin(admin: Admin) {
     console.log("Admin logged in");
     console.log( this.admin);
+    window.localStorage.setItem('admin', JSON.stringify(this.admin));
     this._router.navigate(['provider-list']);
   }
   ngOnInit() {

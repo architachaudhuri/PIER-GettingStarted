@@ -1,3 +1,42 @@
-<p>
-  provider-location works!
-</p>
+<div class="container container-outline">
+  <div class="row outline">
+    <div class="col-sm-6">
+      <h3>Welcome to PIER Network</h3>
+    </div>
+    <div class="col-sm-6" style="text-align: right;">
+      <h3>{{admin.userName}} (Administrator)</h3>
+    </div>
+  </div>
+  <div class="row text-align-center">
+    <div class="col-sm-4"><u>Provider Physical Location</u></div>
+    <div class="col-sm-4"><u>{{provider.salutation}} {{provider.lastName}}, {{provider.firstName}}</u></div>
+    <div class="col-sm-4"><u>Provider ID : {{provider.providerId}}</u></div>
+  </div>
+  <div class="row sub-outline">
+    <div class="col-sm-6"><u>Hours of Operation</u></div>
+  </div>
+  <form class="" ngForm="hoursOpForm" #hoursOpForm="ngForm">
+    <div class="row table-padding">
+      <!-- <div ag-grid="gridOptions" class="ag-theme-blue grid-align-center">
+        <ag-grid-angular style="width: 600px; height: 150px;" [rowData]="rowData" [columnDefs]="columnDefs">
+        </ag-grid-angular>
+      </div> -->
+      <table class="table-style">
+        <tr>
+          <th>Day(s)</th>
+          <th>Opening Time</th>
+          <th>Closing Time</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let opHour of hoursOfOperation">
+          <td>{{opHour.days}}</td>
+          <td>{{opHour.openingHours}}</td>
+          <td>{{opHour.closingHours}}</td>
+          <td><button type="button" class="btn btn-primary" (click)="editOpHours(opHour)">Edit</button></td>
+          <td><button type="button" class="btn btn-primary" disabled="disabled">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
