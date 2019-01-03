@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Provider } from '../models/provider';
 import { HoursOfOperation } from '../models/hours-of-operation';
 import { ProviderOpHours } from '../models/provider-op-hours';
+import { Observable } from 'rxjs';
+import { Http, Response } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,40 +12,53 @@ import { ProviderOpHours } from '../models/provider-op-hours';
 export class ProviderService {
 
   hoursOfOperation: HoursOfOperation[] = [{
-    days: 'MONDAY',
-    openingHours: '09:00 AM PST',
-    closingHours: '05:00 PM PST'
+    id: '',
+    days: 'Monday',
+    openingTime: '9.00 AM IST',
+    closingTime: '6.00 PM IST',
+    pfin_id: ''
+  },{
+    id: '',
+    days: 'Tuesday',
+    openingTime: 'Open 24 hours',
+    closingTime: '',
+    pfin_id: ''
   },
   {
-    days: 'TUESDAY',
-    openingHours: 'Open 24 hours',
-    closingHours: ''
+    id: '',
+    days: 'Wednesday',
+    openingTime: 'By appointment only',
+    closingTime: null,
+    pfin_id: ''
   },
   {
-    days: 'WEDNESDAY',
-    openingHours: '11:00 AM PST',
-    closingHours: '06:00 PM PST'
+    id: '',
+    days: 'Thursday',
+    openingTime: 'Open 24 hours',
+    closingTime: null,
+    pfin_id: ''
   },
   {
-    days: 'THURSDAY',
-    openingHours: 'Open 24 hours',
-    closingHours: ''
+    id: '',
+    days: 'Friday',
+    openingTime: '10.00 AM IST',
+    closingTime: '5.00 PM IST',
+    pfin_id: ''
   },
   {
-    days: 'FRIDAY',
-    openingHours: '01:00 PM PST',
-    closingHours: '05:00 PM PST'
+    id: '',
+    days: 'Saturday',
+    openingTime: 'By appointment only',
+    closingTime: null,
+    pfin_id: ''
   },
   {
-    days: 'SATURDAY',
-    openingHours: 'By appointment only',
-    closingHours: ''
-  },
-  {
-    days: 'SUNDAY',
-    openingHours: 'Office is closed',
-    closingHours: ''
-  }]
+    id: '',
+    days: 'Sunday',
+    openingTime: 'Office is closed',
+    closingTime: null,
+    pfin_id: ''
+  }];
   providerList: Provider[] = [{
     firstName: 'Hillary',
     lastName: 'McCarter',
@@ -89,7 +105,7 @@ export class ProviderService {
     hoursOfOperation: []
   }]
 
-  constructor() { }
+  constructor(private _http: Http) { }
 
   getProviderDetails(providerId: string): Provider {
     console.log("inside getProviderDetails");
@@ -101,28 +117,50 @@ export class ProviderService {
     return this.providerList;
   }
 
-  getHoursOfOperations(providerID: string): HoursOfOperation[] {
+  getHoursOfOperations(): HoursOfOperation[] {
+    console.log("Service calling");
+    // this.getOperations().subscribe(
+    //   res => {
+    //     console.log("Response data");
+    //     console.log(res);
+    //     this.hoursOfOperation = res["hours"];
+    //     console.log("Response data: hours");
+    //     console.log(res["hours"]);
+    //     console.log("Response data: hours op");
+    //     console.log(this.hoursOfOperation);
+    //   });
     return this.hoursOfOperation;
   }
 
+  // getOperations(): Observable<HoursOfOperation[]> {
+  //   console.log("Inside getOperations method");
+  //   return this._http.
+  //     get(`http://10.21.200.172:8097/users/houroperations/H001984563`).pipe(map((res: Response) => {
+  //       return res.json();
+  //     }))
+  //     ;
+  // }
+
   saveHours(providerHours: ProviderOpHours) {
     let updatedHours: HoursOfOperation = {
+      id: '',
+      pfin_id: '',
       days: '',
-      openingHours: '',
-      closingHours: ''
+      openingTime: '',
+      closingTime: ''
     };
     updatedHours.days = providerHours.day;
-    updatedHours.openingHours = providerHours.openingHours;
-    updatedHours.closingHours = providerHours.closingHours;
+    updatedHours.openingTime = providerHours.openingHours;
+    updatedHours.closingTime = providerHours.closingHours;
     if (providerHours.isClosed == true) {
-      updatedHours.openingHours = "Office is closed";
-      updatedHours.closingHours = '';
+      updatedHours.openingTime = "Office is closed";
+      updatedHours.closingTime = '';
     } else if (providerHours.openAlways == true) {
-      updatedHours.openingHours = "Opens 24 hours";
-      updatedHours.closingHours = '';
+      updatedHours.openingTime = "Open 24 hours";
+      updatedHours.closingTime = '';
     } else if (providerHours.appointmentOnly == true) {
-      updatedHours.openingHours = "By appointment only";
-      updatedHours.closingHours = '';
+      updatedHours.openingTime = "By appointment only";
+      updatedHours.closingTime = '';
     }
     const index = this.findIndex(this.hoursOfOperation, updatedHours.days);
     this.hoursOfOperation[index] = updatedHours;

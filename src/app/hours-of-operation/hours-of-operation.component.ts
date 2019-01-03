@@ -61,8 +61,8 @@ export class HoursOfOperationComponent implements OnInit {
     let daySelected = savedOpHour["days"];
     console.log(daySelected);
     this.providerOpHours.day = daySelected;
-    this.providerOpHours.openingHours = savedOpHour["openingHours"];
-    this.providerOpHours.closingHours = savedOpHour["closingHours"];
+    this.providerOpHours.openingHours = savedOpHour["openingTime"];
+    this.providerOpHours.closingHours = savedOpHour["closingTime"];
     if (this.providerOpHours.openingHours === "By appointment only") {
       this.providerOpHours.appointmentOnly = true;
       this.providerOpHours.isClosed = false;
@@ -73,18 +73,17 @@ export class HoursOfOperationComponent implements OnInit {
       this.providerOpHours.isClosed = true;
       this.providerOpHours.openingHours = '';
       this.providerOpHours.isSelected = true;
-    } else if (this.providerOpHours.openingHours && this.providerOpHours.closingHours) {
-      this.providerOpHours.isSelected = true;
-      this.providerOpHours.isClosed = false;
-      this.providerOpHours.isOpen = true;
-      this.providerOpHours.isClose = true;
-    }
-    else if (this.providerOpHours.openingHours === "Open 24 hours") {
+    } else if (this.providerOpHours.openingHours === "Open 24 hours") {
       this.providerOpHours.openAlways = true;
       this.isEnable = false;
       this.providerOpHours.isClosed = false;
       this.providerOpHours.isSelected = true;
       this.providerOpHours.openingHours = '';
+    } else if (this.providerOpHours.openingHours && this.providerOpHours.closingHours) {
+      this.providerOpHours.isSelected = true;
+      this.providerOpHours.isClosed = false;
+      this.providerOpHours.isOpen = true;
+      this.providerOpHours.isClose = true;
     }
     console.log(this.providerOpHours);
   }

@@ -1,5 +1,7 @@
 export class HoursOfOperation {
+    id: string;
     days:string;
-    openingHours: string;
-    closingHours: string;
+    openingTime: string;
+    closingTime: string;
+    pfin_id:string;
 }

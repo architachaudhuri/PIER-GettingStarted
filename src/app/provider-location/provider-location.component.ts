@@ -33,7 +33,9 @@ export class ProviderLocationComponent implements OnInit {
     this.provider = JSON.parse(localStorage.getItem("provider"));
     console.log("selected provider details--location:");
     console.log(this.provider);
-    this.hoursOfOperation = this._providerService.getHoursOfOperations(this.provider.providerId);
+    this.hoursOfOperation = this._providerService.getHoursOfOperations();
+    console.log("On load");
+    console.log(this.hoursOfOperation);
   }
 
   editOpHours(opHourForm: HoursOfOperation) {

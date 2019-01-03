@@ -27,14 +27,12 @@
           <th>Opening Time</th>
           <th>Closing Time</th>
           <th></th>
-          <th></th>
         </tr>
         <tr *ngFor="let opHour of hoursOfOperation">
           <td>{{opHour.days}}</td>
-          <td>{{opHour.openingHours}}</td>
-          <td>{{opHour.closingHours}}</td>
+          <td>{{opHour.openingTime}}</td>
+          <td>{{opHour.closingTime}}</td>
           <td><button type="button" class="btn btn-primary" (click)="editOpHours(opHour)">Edit</button></td>
-          <td><button type="button" class="btn btn-primary" disabled="disabled">Delete</button></td>
         </tr>
       </table>
     </div>
